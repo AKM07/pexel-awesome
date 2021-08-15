@@ -5,17 +5,33 @@ import 'package:rxdart/rxdart.dart';
 
 class PhotoBloc {
   final PhotoRepository repository = PhotoRepository();
+  List<PhotoResponse> _photosData = [];
 
   final BehaviorSubject<BaseResponse<PhotoResponse>> getPhotoSubject =
       BehaviorSubject<BaseResponse<PhotoResponse>>();
 
-  doGetPhotos(String page, String rowsPage) async {
+  doGetPhotos(int page, int rowsPage) async {
     getPhotoSubject.add(BaseResponse.loading());
     try {
       BaseResponse<PhotoResponse> response =
           await repository.doGetPhoto(page, rowsPage);
+      _photosData.clear();
+      _photosData.addAll(response.photos!);
 
-      getPhotoSubject.add(BaseResponse.completed(response.photos));
+      getPhotoSubject.add(BaseResponse.completed(_photosData));
+    } catch (error, stacktrace) {
+      print(
+          "Menu stacktrace " + error.toString() + " " + stacktrace.toString());
+      getPhotoSubject.sink.add(BaseResponse.error());
+    }
+  }
+
+  doGetNextPhotos(int page, int rowsPage) async {
+    try {
+      BaseResponse<PhotoResponse> response =
+      await repository.doGetPhoto(page, rowsPage);
+      _photosData.addAll(response.photos!);
+      getPhotoSubject.add(BaseResponse.completed(_photosData));
     } catch (error, stacktrace) {
       print(
           "Menu stacktrace " + error.toString() + " " + stacktrace.toString());

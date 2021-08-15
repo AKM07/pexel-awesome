@@ -8,7 +8,8 @@ class CommonLoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: CircularProgressIndicator(
-          backgroundColor: Color(Constants.appMainColor)),
+        backgroundColor: Color(Constants.appMainColor),
+      ),
     );
   }
 }

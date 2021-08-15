@@ -6,8 +6,8 @@ import 'constants/Constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await setupLocator();
   await baseDio();
+  await setupLocator();
   runApp(MyApp());
 }
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(Constants.appMainColor),
         primaryColorDark: Color(Constants.appMainColor),
         accentColor: Color(0xFFe0e0e0),
-        backgroundColor: Constants.appBackgroundColor,
+        backgroundColor: Color(Constants.appBackgroundColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,

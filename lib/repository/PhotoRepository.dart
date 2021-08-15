@@ -7,8 +7,8 @@ import 'package:dio/dio.dart';
 class PhotoRepository {
   final Dio dio = locator<Dio>();
 
-  Future<BaseResponse<PhotoResponse>> doGetPhoto(String page,
-      String rowsPage) async {
+  Future<BaseResponse<PhotoResponse>> doGetPhoto(int page,
+      int rowsPage) async {
     try {
       dio.options.contentType = "application/json";
       Response response =
