@@ -102,7 +102,7 @@ class _PhotoDetailPageState extends State<PhotoDetailPage> {
                                 height: 10,
                               ),
                               Text(
-                                widget.photoData.height.toString(),
+                                  widget.photoData.height.toString(),
                                 style: TextStyle(color: Colors.black, fontSize: 14),
                               ),
                               SizedBox(
@@ -116,11 +116,11 @@ class _PhotoDetailPageState extends State<PhotoDetailPage> {
                                 height: 10,
                               ),
                               Text(
-                                widget.photoData.avgColor.toString(),
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                ),
+                                widget.photoData.avgColor!,
+                                style: TextStyle(color: Colors.black, fontSize: 14),
+                              ),
+                              SizedBox(
+                                height: 10,
                               ),
                             ],
                           )),
